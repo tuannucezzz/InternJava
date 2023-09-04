@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+
+    <style>
+        .btn {
+            border-radius: 8px;
+            min-width: 68px;
+        }
+
+        button a {
+            text-decoration: none;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="comman/header :: navbar"></div>
+<div>
+<!--    <form th:action="@{/student/{studentId}/class(studentId=${student.id})}" th:object="${student}" method="get">-->
+        <div class="col-sm-12" align = "center">
+            <br/>
+            <h2>Class List</h2>
+            <br/>
+            <div class="panel-body" align = "center" >
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center">Class ID</th>
+                        <th>Class Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr  th:each="class : ${listclass}">
+                        <td class="text-center" th:text="${class.classId}">Class ID</td>
+                        <td th:text="${class.className}">Class Name</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div align="right">
+                <button type="button" class="btn btn-danger"><a th:href="@{'/student/' + ${student.id} + '/delete'}">Delete All</a></button>
+                <button type="button" class="btn btn-info"><a th:href="@{/student}">Back</a></button>
+            </div>
+        </div>
+<!--    </form>-->
+</div>
+</body>
+</html>
